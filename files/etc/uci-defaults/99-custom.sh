@@ -43,7 +43,7 @@ echo "Board detected: $board_name" >>$LOGFILE
 
 wan_ifname=""
 lan_ifnames=""
-# 此处特殊处理个别开发板网口顺序问题
+# 特殊开发板依然单独处理
 case "$board_name" in
     "radxa,e20c"|"friendlyarm,nanopi-r5c")
         wan_ifname="eth1"
@@ -51,9 +51,9 @@ case "$board_name" in
         echo "Using $board_name mapping: WAN=$wan_ifname LAN=$lan_ifnames" >>"$LOGFILE"
         ;;
     *)
-        # 默认第一个接口为WAN，其余为LAN
-        wan_ifname=$(echo "$ifnames" | awk '{print $1}')
-        lan_ifnames=$(echo "$ifnames" | cut -d ' ' -f2-)
+        # 默认规则：最后一个接口为 WAN，其余为 LAN
+        wan_ifname=$(echo "$ifnames" | awk '{print $NF}')
+        lan_ifnames=$(echo "$ifnames" | awk '{$NF=""; print $0}')
         echo "Using default mapping: WAN=$wan_ifname LAN=$lan_ifnames" >>"$LOGFILE"
         ;;
 esac
