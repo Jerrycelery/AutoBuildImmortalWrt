@@ -1,4 +1,4 @@
-name: build-RaspBerryPi-23.05.4-ImmortalWrt
+name: Build 23.05.4 RaspBerryPi
 
 on:
   workflow_dispatch:

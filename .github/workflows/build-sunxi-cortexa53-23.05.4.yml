@@ -1,4 +1,4 @@
-name: build-sunxi-cortexa53-23.05.4-ImmpotalWrt
+name: Build 23.05.4 sunxi-cortexa53
 
 on:
   workflow_dispatch:
