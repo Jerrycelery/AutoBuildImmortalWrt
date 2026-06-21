@@ -116,7 +116,7 @@ jobs:
           cp ${{ github.workspace }}/bin/targets/armsr/armv8/*.vmdk ${{ github.workspace }}
 
       - name: Upload ImmortWrt as release assets
-        uses: softprops/action-gh-release@3
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: QEMU
           name: ImmortWrt-QEMU-armsr-armv8-24.10.x
